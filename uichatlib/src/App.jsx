@@ -1,13 +1,11 @@
 import { useState, useRef, useEffect } from 'react';
 import { Menu } from 'lucide-react';
-import Sidebar from './Components/Sidebar';
 import Message from './Components/Message';
 import ChatInput from './Components/ChatInput';
 
 function App() {
   const [input, setInput] = useState('');
   const [messages, setMessages] = useState([]);
-  const [isSidebarOpen, setIsSidebarOpen] = useState(true);
   const messagesEndRef = useRef(null);
 
   const scrollToBottom = () => {
@@ -40,15 +38,8 @@ function App() {
 
   return (
     <div className="flex h-screen bg-gray-900">
-      <Sidebar isOpen={isSidebarOpen} onNewChat={handleNewChat} />
 
       <div className="flex-1 flex flex-col relative">
-        <button
-          onClick={() => setIsSidebarOpen(!isSidebarOpen)}
-          className="absolute top-2 left-2 p-2 text-gray-400 hover:text-white md:hidden"
-        >
-          <Menu className="w-6 h-6" />
-        </button>
 
         <div className="flex-1 overflow-y-auto">
           {messages.length === 0 ? (
