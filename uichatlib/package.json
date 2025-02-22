@@ -1,31 +1,43 @@
 {
   "name": "uichatlib",
-  "private": true,
-  "version": "0.0.0",
+  "version": "1.0.2",
+  "description": "A modular AI chatbot UI component",
   "type": "module",
+  "private": false,
+  "main": "dist/uichatlib.cjs.js",
+  "module": "dist/uichatlib.es.js",
+  "types": "dist/index.d.ts",
+  "files": [
+    "dist"
+  ],
   "scripts": {
     "dev": "vite",
     "build": "vite build",
     "lint": "eslint .",
-    "preview": "vite preview"
+    "prepublishOnly": "npm run build"
+  },
+  "peerDependencies": {
+    "react": "^19.0.0",
+    "react-dom": "^19.0.0"
   },
   "dependencies": {
     "@tailwindcss/vite": "^4.0.8",
     "lucide-react": "^0.475.0",
-    "react": "^19.0.0",
-    "react-dom": "^19.0.0",
     "tailwindcss": "^4.0.8"
   },
   "devDependencies": {
-    "@eslint/js": "^9.19.0",
-    "@types/react": "^19.0.8",
-    "@types/react-dom": "^19.0.3",
     "@vitejs/plugin-react": "^1.3.2",
-    "eslint": "^9.19.0",
-    "eslint-plugin-react": "^7.37.4",
-    "eslint-plugin-react-hooks": "^5.0.0",
-    "eslint-plugin-react-refresh": "^0.4.18",
-    "globals": "^15.14.0",
-    "vite": "^6.1.0"
-  }
+    "eslint": "^9.21.0",
+    "typescript": "^5.7.3",
+    "vite": "^6.1.1"
+  },
+  "keywords": [
+    "react",
+    "chatbot",
+    "AI",
+    "UI",
+    "component"
+  ],
+  "author": "Your Name",
+  "license": "MIT"
 }
