@@ -3,9 +3,7 @@ import Message from './Message';
 import ChatInput from './ChatInput';
 import axios from 'axios';
 
-function Chatbot() {
-  const cohereApiKey = `JFQUx8Fu5wKwYZKG1TulQ6v7VVtbnq2s4hcAZfCE`;
-  const geminiApiKey = `AIzaSyDt7_j1TQkzVex9NH9QftIiiMbHcqOADlk`;
+function Chatbot({ apiKey, aiName }) {
   const [input, setInput] = useState('');
   const [messages, setMessages] = useState([]);
   const [loading, setLoading] = useState(false);
@@ -20,7 +18,7 @@ function Chatbot() {
     scrollToBottom();
   }, [messages]);
 
-  const handleCohereSubmit = async (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
     if (!input.trim()) return;
 
@@ -28,55 +26,49 @@ function Chatbot() {
     setLoading(true);
 
     try {
-      const response = await axios.post(
-        'https://api.cohere.ai/v1/generate',
-        {
-          model: "command",
-          prompt: input,
-          max_tokens: 150,
-          temperature: 0.7
-        },
-        {
-          headers: {
-            "Content-Type": "application/json",
-            "Authorization": `Bearer ${cohereApiKey}`,
+      let response;
+      let reply = "No response from AI.";
+
+      if (!apiKey || !aiName) {
+        reply = "Integration not found.";
+      } else if (aiName.toLowerCase() === 'cohere') {
+        response = await axios.post(
+          'https://api.cohere.ai/v1/generate',
+          {
+            model: "command",
+            prompt: input,
+            max_tokens: 150,
+            temperature: 0.7
           },
-        }
-      );
+          {
+            headers: {
+              "Content-Type": "application/json",
+              "Authorization": `Bearer ${apiKey}`,
+            },
+          }
+        );
+        reply = response.data.generations?.[0]?.text || reply;
 
-      const reply = response.data.generations?.[0]?.text || "No response from AI.";
+      } else if (aiName.toLowerCase() === 'gemini') {
+        response = await axios.post(
+          `https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash:generateContent?key=${apiKey}`,
+          {
+            contents: [{ parts: [{ text: input }] }]
+          },
+          {
+            headers: { "Content-Type": "application/json" }
+          }
+        );
+        reply = response.data?.candidates?.[0]?.content?.parts?.[0]?.text || reply;
+
+      } else {
+        reply = "Unsupported AI service.";
+      }
+
       setMessages((prev) => [...prev, { role: 'assistant', content: reply }]);
+
     } catch (error) {
-      console.error("Cohere API Error:", error);
-      setMessages((prev) => [...prev, { role: 'assistant', content: "Error fetching AI response." }]);
-    } finally {
-      setLoading(false);
-      setInput('');
-    }
-  };
-
-  const handleGeminiSubmit = async (e) => {
-    e.preventDefault();
-    if (!input.trim()) return;
-
-    setMessages((prev) => [...prev, { role: 'user', content: input }]);
-    setLoading(true);
-
-    try {
-      const response = await axios.post(
-        `https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash:generateContent?key=${geminiApiKey}`,
-        {
-          contents: [{ parts: [{ text: input }] }]
-        },
-        {
-          headers: { "Content-Type": "application/json" }
-        }
-      );
-
-      const reply = response.data?.candidates?.[0]?.content?.parts?.[0]?.text || "No response from AI.";
-      setMessages((prev) => [...prev, { role: 'assistant', content: reply }]);
-    } catch (error) {
-      console.error("Gemini API Error:", error);
+      console.error(`${aiName} API Error:`, error);
       setMessages((prev) => [...prev, { role: 'assistant', content: "Error fetching AI response." }]);
     } finally {
       setLoading(false);
@@ -120,7 +112,7 @@ function Chatbot() {
           </div>
 
           <div className="p-3 border-t border-gray-700">
-            <ChatInput input={input} setInput={setInput} onSubmit={handleGeminiSubmit} />
+            <ChatInput input={input} setInput={setInput} onSubmit={handleSubmit} />
           </div>
         </div>
       )}
