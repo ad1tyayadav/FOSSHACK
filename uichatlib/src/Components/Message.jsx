@@ -1,20 +1,19 @@
 import { User, Bot } from 'lucide-react';
+import './Message.css';
 
 const Message = ({ message }) => {
   return (
-    <div className={`flex items-start gap-3 ${message.role === 'assistant' ? 'justify-start' : 'justify-end'}`}>
+    <div className={`message-container ${message.role === 'assistant' ? 'message-start' : 'message-end'}`}>
       {message.role === 'assistant' && (
-        <div className="p-2 rounded-full bg-green-600">
+        <div className="message-icon bot-icon">
           <Bot className="w-5 h-5 text-white" />
         </div>
       )}
-      <div
-        className={`p-3 rounded-lg max-w-xs text-white ${message.role === 'assistant' ? 'bg-gray-700' : 'bg-blue-600'}`}
-      >
+      <div className={`message-bubble ${message.role === 'assistant' ? 'bot-bubble' : 'user-bubble'}`}>
         {message.content}
       </div>
       {message.role === 'user' && (
-        <div className="p-2 rounded-full bg-blue-600">
+        <div className="message-icon user-icon">
           <User className="w-5 h-5 text-white" />
         </div>
       )}

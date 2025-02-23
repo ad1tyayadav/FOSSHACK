@@ -1,9 +1,10 @@
 import { defineConfig } from "vite";
 import react from "@vitejs/plugin-react";
-import tailwindcss from '@tailwindcss/vite'
+import cssInjectedByJsPlugin from 'vite-plugin-css-injected-by-js';
 
 export default defineConfig({
   build: {
+    cssCodeSplit: false, // ✅ Bundle CSS into JS
     lib: {
       entry: "src/index.js",
       name: "UIChatLib",
@@ -19,8 +20,5 @@ export default defineConfig({
       },
     },
   },
-  plugins: [
-    react(),
-    tailwindcss()
-  ],
+  plugins: [react(), cssInjectedByJsPlugin()],
 });

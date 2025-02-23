@@ -2,8 +2,9 @@ import { useState, useRef, useEffect } from 'react';
 import Message from './Message';
 import ChatInput from './ChatInput';
 import axios from 'axios';
+import './Chatbot.css';
 
-function Chatbot({ apiKey, aiName }) {
+function Chatbot({ apiKey, aiName, Title }) {
   const [input, setInput] = useState('');
   const [messages, setMessages] = useState([]);
   const [loading, setLoading] = useState(false);
@@ -77,10 +78,10 @@ function Chatbot({ apiKey, aiName }) {
   };
 
   return (
-    <div className="fixed bottom-5 right-5">
+    <div className="chatbot-container">
       {/* Floating Button to Toggle Chatbot */}
       <button
-        className="w-14 h-14 rounded-full bg-blue-600 flex items-center justify-center text-white shadow-lg hover:bg-blue-700"
+        className="chatbot-toggle"
         onClick={() => setIsOpen(!isOpen)}
       >
         💬
@@ -88,17 +89,16 @@ function Chatbot({ apiKey, aiName }) {
 
       {/* Chatbot Window */}
       {isOpen && (
-        <div className="absolute bottom-16 right-0 w-80 sm:w-[40vw] bg-gray-800 shadow-lg rounded-lg">
-          <div className="flex justify-between items-center bg-gray-900 text-white p-3 rounded-t-lg">
-            <h3 className="text-lg font-bold">Chatbot</h3>
-            <button className="text-gray-400 hover:text-white" onClick={() => setIsOpen(false)}>✖</button>
+        <div className="chatbot-window">
+          <div className="chatbot-header">
+            <h3>{Title}</h3>
+            <button className="chatbot-close" onClick={() => setIsOpen(false)}>✖</button>
           </div>
 
-          <div className="h-[60vh] overflow-y-auto p-3">
+          <div className="chatbot-messages">
             {messages.length === 0 ? (
-              <div className="h-full flex flex-col items-center justify-center">
-                <h1 className="text-white font-bold text-lg">Sarang</h1>
-                <p className="text-gray-400">How can I help you today?</p>
+              <div className="chatbot-welcome">
+                <h1>{}</h1>
               </div>
             ) : (
               <>
@@ -111,7 +111,7 @@ function Chatbot({ apiKey, aiName }) {
             )}
           </div>
 
-          <div className="p-3 border-t border-gray-700">
+          <div className="chatbot-input">
             <ChatInput input={input} setInput={setInput} onSubmit={handleSubmit} />
           </div>
         </div>
