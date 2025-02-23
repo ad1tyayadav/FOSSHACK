@@ -1,6 +1,6 @@
-# FOSSHACK: aichatlib for Next.js/React
+# FOSSHACK: aibotchat for Next.js/React
 
-> **FOSSHACK** is an open-source UI library that makes it effortless to integrate AI-powered chat interfaces into your modern web applications.
+> **aibotchat** is an open-source UI library that makes it effortless to integrate AI-powered chat interfaces into your modern web applications.
 
 [Homepage](https://www.aichatbot.vercel.com)
 
@@ -8,7 +8,7 @@
 
 ## 🚀 Overview
 
-FOSSHACK provides a sleek, customizable chat component that integrates directly into your webpage. Designed with Next.js/React in mind, it offers seamless AI model integration, streaming capabilities, and support for tool calls—all optimized for today's web.
+aibotchat provides a sleek, customizable chat component that integrates directly into your webpage. Designed with Next.js/React in mind, it offers seamless AI model integration, streaming capabilities, and support for tool calls—all optimized for today's web.
 
 ---
 
@@ -24,13 +24,13 @@ FOSSHACK provides a sleek, customizable chat component that integrates directly 
 
 ## 📦 Installation
 
-Install FOSSHACK via npm or yarn:
+Install aibotchat via npm or yarn:
 
 # Using npm
-```npm install aichatlib```
+```npm install aibotchat```
 
 # Using yarn
-```yarn add aichatlib```
+```yarn add aibotchat```
 
 ⚡ Quick Start
 
@@ -38,7 +38,7 @@ Integrate the AI chat bot button on your website with a single component:
 
 ```
 import React from 'react';
-import { Chatbot } from 'aichatlib';
+import { Chatbot } from 'aibotchat';
 
 function App() {
   return (
@@ -55,7 +55,7 @@ export default App;
 This component renders a fixed chat button at the bottom-right of your webpage, enabling users to instantly access an AI-powered chat interface.
 🔧 Configuration
 
-FOSSHACK is highly customizable. You can tweak the behavior and appearance using the following props:
+aibotchat is highly customizable. You can tweak the behavior and appearance using the following props:
 
     position: Set the button's position (e.g., "bottom-right" or "bottom-left").
     apiEndpoint: Define the API route to handle chat messages.
@@ -64,7 +64,7 @@ FOSSHACK is highly customizable. You can tweak the behavior and appearance using
 
 🤖 AI Backend Integration
 
-FOSSHACK supports multiple AI backends:
+aibotchat supports multiple AI backends:
 
     OpenAI: Integrate GPT models for natural language processing.
     LangGraph: Leverage LangGraph for customized AI workflows.
