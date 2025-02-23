@@ -2,6 +2,8 @@
 
 > **FOSSHACK** is an open-source UI library that makes it effortless to integrate AI-powered chat interfaces into your modern web applications.
 
+[Homepage](aichatbot.vercel.com)
+
 ---
 
 ## 🚀 Overview
