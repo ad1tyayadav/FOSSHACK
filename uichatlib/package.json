@@ -1,6 +1,8 @@
 {
+
   "name": "aibotchat",
   "version": "1.0.8",
+
   "description": "A modular AI chatbot UI component",
   "type": "module",
   "private": false,
@@ -39,6 +41,6 @@
     "UI",
     "component"
   ],
-  "author": "Your Name",
+  "author": "Sarang",
   "license": "MIT"
 }
