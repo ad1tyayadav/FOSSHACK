@@ -44,7 +44,7 @@ function App() {
   return (
     <div>
       <h1>My Chat App</h1>
-      <Chatbot apiKey="YourApiKey" aiName="cohere" />
+      <Chatbot apiKey="YourApiKey" aiName="cohere" Title ="Your brandname" />
     </div>
   );
 }
