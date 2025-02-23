@@ -1,7 +1,9 @@
 import { useState } from 'react';
-import Chatbot from './Components/ChatBot';
+import Chatbot from './Components/Chatbot';
 
 function App() {
+  
+
   return (
     <div>
       <Chatbot />
