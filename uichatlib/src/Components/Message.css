@@ -1,0 +1,50 @@
+/* Message.css */
+
+.message-container {
+    display: flex;
+    align-items: flex-start;
+    font-family: sans-serif;
+    gap: 12px;
+    margin: 1vmax 0;
+  }
+  
+  .message-start {
+    justify-content: flex-start;
+  }
+  
+  .message-end {
+    justify-content: flex-end;
+  }
+  
+  .message-icon {
+    padding: 8px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  .bot-icon {
+    background-color: #16a34a; /* bg-green-600 */
+  }
+  
+  .user-icon {
+    background-color: #2563eb; /* bg-blue-600 */
+  }
+  
+  .message-bubble {
+    padding: 12px;
+    border-radius: 8px;
+    max-width: 250px;
+    color: white;
+    word-wrap: break-word;
+  }
+  
+  .bot-bubble {
+    background-color: #374151; /* bg-gray-700 */
+  }
+  
+  .user-bubble {
+    background-color: #2563eb; /* bg-blue-600 */
+  }
+  

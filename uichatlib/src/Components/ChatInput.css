@@ -1,0 +1,45 @@
+/* ChatInput.css */
+
+.chat-input-form {
+    position: relative;
+    width: 94%;
+  }
+  
+  .chat-input-field {
+    width: 95%;
+    background-color: #4b5563; /* bg-gray-600 */
+    color: white;
+    border-radius: 9999px; /* rounded-full */
+    padding: 8px 40px 8px 16px; /* px-4 py-2 with space for button */
+    border: none;
+    outline: none;
+    box-shadow: 0 1px 4px rgba(0, 0, 0, 0.2); /* shadow-md */
+    transition: box-shadow 0.2s;
+  }
+  
+  .chat-input-field:focus {
+    box-shadow: 0 0 0 2px #3b82f6; /* focus:ring-2 focus:ring-blue-500 */
+  }
+  
+  .chat-input-button {
+    position: absolute;
+    right: 8px;
+    top: 50%;
+    transform: translateY(-50%);
+    background: none;
+    border: none;
+    padding: 4px;
+    color: #d1d5db; /* text-gray-300 */
+    cursor: pointer;
+    transition: color 0.2s, opacity 0.2s;
+  }
+  
+  .chat-input-button:hover {
+    color: white;
+  }
+  
+  .chat-input-button:disabled {
+    opacity: 0.5; /* disabled:opacity-50 */
+    cursor: not-allowed;
+  }
+  

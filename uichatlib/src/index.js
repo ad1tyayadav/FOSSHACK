@@ -1,2 +1,3 @@
-export { default as ChatInput } from "./Components/ChatInput";
-export { default as Message } from "./Components/Message";
+import './Components/Chatbot.css'; // Static import is enough
+
+export { default as Chatbot } from './Components/Chatbot';
